@@ -8,6 +8,8 @@ To connect with doku, follow the steps :
 ### Add Doku Repository
 Add repository to **build.gradle** :
 ```
+import com.doku.android.sdk.main.DokuPayVa;
+
 repositories {
         maven {
             url  "https://dl.bintray.com/dokudevex/doku"
