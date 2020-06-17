@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="5dp">
+
+    <RelativeLayout
+        android:id="@+id/homeRL7"
+        android:gravity="left"
+        android:paddingTop="10dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo_dw"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/logo_dw"
+            android:layout_marginLeft="10dp"
+            android:textSize="17sp"
+            android:textColor="@color/navigation_bar_txt_color"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Login" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/homeRL8"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_below="@+id/homeRL7"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvAlertBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical|fill_horizontal"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/navigation_bar_txt_color"
+            android:text="Data yang Anda masukan salah. Silakan Perbaiki data nya !" />
+
+    </RelativeLayout>
+</RelativeLayout>

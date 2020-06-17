@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d32f2f</color>
+    <color name="colorPrimaryDark">#be2e2e</color>
+    <color name="colorAccent">#d32f2f</color>
+    <color name="colapsing_recycle_menu">#F4F4F4</color>
+    <color name="colapsing_recycle_menu_header">#e2572e</color>
+    <color name="colapsing_recycle_menu_color">#616161</color>
+    <color name="white">#ffffff</color>
+    <color name="tolbar_title">#666666</color>
+    <color name="tolbar_total_order">#999999</color>
+    <color name="tolbar_total_payment">#4D4D4D</color>
+</resources>

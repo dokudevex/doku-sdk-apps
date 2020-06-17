@@ -1,0 +1,156 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+
+
+def     archiveName = 'doku-sdk-apps'
+def libVersion = '0.0.7'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName = libVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL_SANDBOX", "\"http://dev.dokupay.com/\"")
+            buildConfigField("String", "BASE_URL_PRODUCTION", "\"https://dokupay.com/\"")
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL_SANDBOX", "\"http://dev.dokupay.com/\"")
+            buildConfigField("String", "BASE_URL_PRODUCTION", "\"https://dokupay.com/\"")
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.dagger:dagger-android:2.26'
+    implementation 'com.google.dagger:dagger-android-support:2.26'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.26'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.26'
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.jakewharton.timber:timber:4.6.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+    implementation 'me.jessyan:retrofit-url-manager:1.4.0'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.1'
+    implementation "uk.co.chrisjenx:calligraphy:2.3.0"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+}
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        repositories { maven { url "https://jitpack.io" }}
+        repositories {
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'androidx.appcompat:appcompat:1.1.0'
+        classpath 'androidx.constraintlayout:constraintlayout:1.1.3'
+        classpath 'androidx.recyclerview:recyclerview:1.1.0'
+        classpath 'junit:junit:4.12'
+        classpath 'androidx.test.ext:junit:1.1.1'
+        classpath 'com.github.bumptech.glide:glide:4.11.0'
+        classpath 'com.github.bumptech.glide:compiler:4.11.0'
+        classpath 'androidx.test.espresso:espresso-core:3.2.0'
+        classpath 'com.google.code.gson:gson:2.8.5'
+        classpath 'com.google.dagger:dagger-android:2.26'
+        classpath 'com.google.dagger:dagger-android-support:2.26'
+        classpath 'com.google.dagger:dagger-android-processor:2.26'
+        classpath 'com.google.dagger:dagger-compiler:2.26'
+        classpath 'javax.annotation:jsr250-api:1.0'
+        classpath 'javax.inject:javax.inject:1'
+        classpath 'io.reactivex.rxjava2:rxjava:2.1.9'
+        classpath 'io.reactivex.rxjava2:rxandroid:2.0.2'
+        classpath 'com.jakewharton.timber:timber:4.6.1'
+        classpath 'com.squareup.retrofit2:retrofit:2.6.1'
+        classpath 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+        classpath 'com.squareup.retrofit2:converter-gson:2.6.1'
+        classpath 'me.jessyan:retrofit-url-manager:1.4.0'
+        classpath 'com.squareup.okhttp3:logging-interceptor:4.0.1'
+        classpath "uk.co.chrisjenx:calligraphy:2.3.0"
+        classpath 'com.google.android.material:material:1.1.0'
+        classpath 'io.github.inflationx:calligraphy3:3.1.1'
+        classpath 'io.github.inflationx:viewpump:2.0.3'
+        classpath 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+    }
+}
+allprojects {
+    repositories {
+        google() // and here
+        jcenter()
+        repositories { maven { url "https://jitpack.io" }}
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    pkg {
+        repo = 'doku'
+        name = 'com.doku.android.sdk'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/dokudevex/doku-sdk-apps.git'
+        version {
+            name = libVersion
+        }
+    }
+    publications = ['aar']
+    publish = true
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId 'com.doku.android'
+            artifactId archiveName
+            version libVersion
+            artifact("$buildDir/outputs/aar/$archiveName-release.aar")
+        }
+    }
+}
