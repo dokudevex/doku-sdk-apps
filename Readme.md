@@ -8,8 +8,6 @@ To connect with doku, follow the steps :
 ### Add Doku Repository
 Add repository to **build.gradle** :
 ```
-import com.doku.android.sdk.main.DokuPayVa;
-
 repositories {
         maven {
             url  "https://dl.bintray.com/dokudevex/doku"
@@ -49,6 +47,8 @@ String words = Utils.SHA256(dataWords);
 #### Call Doku Component
 
 ```
+import com.doku.android.sdk.main.DokuPayVa;
+
 new DokuPayVa.Builder(this)
 	.clientId(Preferences.getClientId(PaymentPage.this))
     .customerEmail(customerEmail)
