@@ -6,4 +6,5 @@
     <string name="error_field_choose">Harus di pilih</string>
     <string name="bank_mandiri">Mandiri</string>
     <string name="bank_mandiri_syariah">Mandiri Syariah</string>
+    <string name="merchant">MERCHANT</string>
 </resources>

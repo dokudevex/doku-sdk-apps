@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -30,50 +29,52 @@
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/tolbar_title"
-                android:text="MERCHANT"
                 android:layout_gravity="center_horizontal"
                 android:ellipsize="end"
                 android:gravity="center"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="@string/merchant"
+                android:textAppearance="bold"
+                android:textColor="@color/title" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout_paymentresult_top"
         android:layout_width="match_parent"
+        android:layout_height="52dp"
         android:background="@color/tolbar_title"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="52dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <TextView
             android:id="@+id/textview_paymentresult_titlecomplete"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:textSize="16sp"
             android:fontFamily="@font/dokuregular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:gravity="center_vertical"
-            android:textColor="@color/white"
             android:text="Complete payment in"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/tolbar_title_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textview_paymentresult_complete"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
-            android:textSize="16sp"
             android:fontFamily="@font/dokuregular"
-            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center_vertical"
+            android:text="0 hr : 54 min : 12 sec"
+            android:textColor="@color/tolbar_title_text"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:text="0 hr : 54 min : 12 sec"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,12 +82,12 @@
         android:id="@+id/scrollview_paymentresult_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/constraintlayout_paymentresult_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintlayout_paymentresult_top">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,263 +95,291 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintlayout_paymentresult_total"
-                    android:layout_width="match_parent"
-                    android:layout_height="117dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/shape"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_orderid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_order"
-                        android:text="Order ID: 1234567890"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_totalpayment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="18dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_orderid"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_payment"
-                        android:text="Total Payment"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_totalrp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="18dp"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentresult_totalpayment"
-                        android:textColor="@color/tolbar_total_payment"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:text="IDR 1,000,000"
-                        android:textSize="26sp"
-                        android:fontFamily="@font/dokuregular" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <Button
-                    android:id="@+id/button_paymentresult_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Details"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/dokuregular"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintlayout_paymentresult_total"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintlayout_paymentresult_total"
+                android:layout_width="match_parent"
+                android:layout_height="117dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textview_paymentresult_transfertitle"
+                    android:id="@+id/textview_paymentresult_orderid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button_paymentresult_details"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Order ID: 1234567890"
+                    android:textColor="@color/tolbar_total_order"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textColor="@android:color/black"
-                    android:text="Please Transfer to"
-                    android:textSize="26sp"
-                    android:fontFamily="@font/dokuregular" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintlayout_paymentresult_transferto"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textview_paymentresult_totalpayment"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/shape"
-                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_transfertitle"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Total Payment"
+                    android:textColor="@color/tolbar_total_payment"
+                    android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_orderid" />
 
-                    <TextView
-                        android:id="@+id/textview_paymentresult_virtualaccount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_order"
-                        android:text="Virtual Account"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/dokuregular" />
+                <TextView
+                    android:id="@+id/textview_paymentresult_totalrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="25dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="IDR 1,000,000"
+                    android:textColor="@color/tolbar_total_payment_amount"
+                    android:textSize="26sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentresult_totalpayment"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textview_paymentresult_channel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="18dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualaccount"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_payment"
-                        android:text="Mandiri"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/dinbold" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button_paymentresult_details"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:fontFamily="@font/dokuregular"
+                android:text="Details"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintlayout_paymentresult_total" />
+
+            <TextView
+                android:id="@+id/textview_paymentresult_transfertitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/dokuregular"
+                android:text="Please Transfer to"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_paymentresult_details" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintlayout_paymentresult_transferto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_transfertitle">
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_virtualaccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Virtual Account"
+                    android:textColor="@color/tolbar_total_order"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_channel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/dinbold"
+                    android:text="Mandiri"
+                    android:textColor="@color/tolbar_total_payment"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualaccount" />
+
+                <ImageView
+                    android:id="@+id/imageview_paymentresult_channelnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginRight="25dp"
+                    android:fontFamily="@font/dokuregular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_virtualaccountnumbertitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Virtual Account Number"
+                    android:textColor="@color/tolbar_total_order"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_channel" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_virtualnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/dinbold"
+                    android:text="7001 1234 0123 5678"
+                    android:textColor="@color/tolbar_total_payment"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualaccountnumbertitle" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="25dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="COPY"
+                    android:textColor="@color/tolbar_total_payment"
+                    android:textSize="23sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentresult_virtualnumber"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_completepaymentbefore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Complete Payment Before"
+                    android:textColor="@color/tolbar_total_order"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualnumber" />
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_completepaymentbeforetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/dinbold"
+                    android:text="11 June 2020, 14:36 WIB"
+                    android:textColor="@color/tolbar_total_payment"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_completepaymentbefore" />
+
+
+                <TextView
+                    android:id="@+id/textview_paymentresult_statustitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dokuregular"
+                    android:text="Payment Status"
+                    android:textColor="@color/tolbar_total_order"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_completepaymentbeforetime" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintlayout_paymentresult_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#ffe7d4"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textview_paymentresult_statustitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_statustitle">
 
                     <ImageView
-                        android:id="@+id/imageview_paymentresult_channelnumber"
+                        android:id="@+id/imageview_paymentresult_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="56dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_virtualaccountnumbertitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_channel"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_order"
-                        android:text="Virtual Account Number"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_virtualnumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="18dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualaccountnumbertitle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_payment"
-                        android:text="7001 1234 0123 5678"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/dinbold" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_copy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="18dp"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentresult_virtualnumber"
-                        android:textColor="@color/tolbar_total_payment"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:text="COPY"
-                        android:textSize="23sp"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <TextView
-                        android:id="@+id/textview_paymentresult_statustitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_virtualnumber"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tolbar_total_order"
-                        android:text="Payment Status"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/dokuregular" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintlayout_paymentresult_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:padding="10dp"
-                        android:background="#ffe7d4"
+                        android:background="@mipmap/icon_warning"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textview_paymentresult_statustitle"
-                        app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_statustitle">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/imageview_paymentresult_status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@mipmap/icon_warning"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/textview_paymentresult_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/dinbold"
+                        android:text="Waiting for payment"
+                        android:textColor="#da7b23"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/imageview_paymentresult_status"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imageview_paymentresult_status"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/textview_paymentresult_status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="18dp"
-                            android:fontFamily="@font/dinbold"
-                            android:text="Waiting for payment"
-                            android:textColor="#da7b23"
-                            android:textSize="14sp"
-                            app:layout_constraintBaseline_toBaselineOf="@+id/imageview_paymentresult_status"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/imageview_paymentresult_status"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textview_paymentresult_instructiontitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintlayout_paymentresult_transferto"
-                    android:layout_marginLeft="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textColor="@android:color/black"
-                    android:text="Payment Instructions"
-                    android:textSize="26sp"
-                    android:fontFamily="@font/dokuregular" />
+            <TextView
+                android:id="@+id/textview_paymentresult_instructiontitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/dokuregular"
+                android:text="Payment Instructions"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintlayout_paymentresult_transferto" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_paymentresult_main"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/shape"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_instructiontitle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_paymentresult_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_paymentresult_instructiontitle" />
 
-                <Button
-                    android:id="@+id/button_paymentpage_change"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CHANGE PAYMENT METHOD"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_paymentresult_main"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/doku"/>
+            <Button
+                android:id="@+id/button_paymentpage_change"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/doku"
+                android:text="CHANGE PAYMENT METHOD"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview_paymentresult_main" />
 
             <ImageView
                 android:id="@+id/imageview_paymentpage_security"
@@ -358,47 +387,55 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/image_security_payment"
-                app:layout_constraintStart_toStartOf="@+id/button_paymentpage_change"
                 app:layout_constraintEnd_toEndOf="@+id/button_paymentpage_change"
-                app:layout_constraintTop_toBottomOf="@+id/button_paymentpage_change"/>
+                app:layout_constraintStart_toStartOf="@+id/button_paymentpage_change"
+                app:layout_constraintTop_toBottomOf="@+id/button_paymentpage_change" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout_paymentresult_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textview_paymentpage_power"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/tolbar_total_payment"
-            android:text="Powered by"
-            android:textSize="16sp"
             android:fontFamily="@font/dokuregular"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="Powered by"
+            android:textColor="@color/tolbar_total_payment"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintCircleRadius="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageview_paymentpage_doku"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/icon_doku"
             android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textview_paymentpage_power"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@mipmap/icon_doku"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentpage_power"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textview_paymentpage_power"/>
+            app:layout_constraintStart_toEndOf="@+id/textview_paymentpage_power"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

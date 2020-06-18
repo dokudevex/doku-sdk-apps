@@ -7,7 +7,12 @@
     <color name="colapsing_recycle_menu_header">#e2572e</color>
     <color name="colapsing_recycle_menu_color">#616161</color>
     <color name="white">#ffffff</color>
-    <color name="tolbar_title">#666666</color>
+    <color name="title">#666666</color>
+    <color name="tolbar_title">#ffe7d4</color>
+    <color name="tolbar_title_text">#da7b23</color>
     <color name="tolbar_total_order">#999999</color>
     <color name="tolbar_total_payment">#4D4D4D</color>
+    <color name="container">#f5f8fb</color>
+    <color name="tolbar_total_payment_amount">#e1251b</color>
+    <color name="footer">#fafafa</color>
 </resources>
