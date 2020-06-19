@@ -34,7 +34,6 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/merchant"
-                android:textAppearance="bold"
                 android:textColor="@color/title" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
