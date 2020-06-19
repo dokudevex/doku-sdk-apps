@@ -9,10 +9,12 @@
     <color name="white">#ffffff</color>
     <color name="title">#666666</color>
     <color name="tolbar_title">#ffe7d4</color>
-    <color name="tolbar_title_text">#da7b23</color>
+    <color name="tolbar_title_text">#666666</color>
     <color name="tolbar_total_order">#999999</color>
     <color name="tolbar_total_payment">#4D4D4D</color>
     <color name="container">#f5f8fb</color>
     <color name="tolbar_total_payment_amount">#e1251b</color>
     <color name="footer">#fafafa</color>
+    <color name="background_payment">#f5f8fb</color>
+    <color name="background_bottom">#fafafa</color>
 </resources>
