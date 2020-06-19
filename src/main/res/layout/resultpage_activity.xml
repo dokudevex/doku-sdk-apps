@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:textColor="@color/tolbar_title"
+                android:textColor="@color/tolbar_title_text"
                 android:text="SET"
                 android:layout_gravity="right"
                 android:ellipsize="end"
