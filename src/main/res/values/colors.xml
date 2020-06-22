@@ -17,4 +17,5 @@
     <color name="footer">#fafafa</color>
     <color name="background_payment">#f5f8fb</color>
     <color name="background_bottom">#fafafa</color>
+    <color name="doku_red">#e1251b</color>
 </resources>

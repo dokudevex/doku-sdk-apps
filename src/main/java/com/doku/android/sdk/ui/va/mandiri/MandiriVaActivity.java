@@ -28,6 +28,7 @@ public class MandiriVaActivity extends BaseActivity implements MandiriVaMvpView 
 
     private ProgressDialog progressDialog;
     private String amount = "0";
+    private String merchantName = "";
     private Boolean isProduction = false;
     private Boolean usePageResult = false;
 
@@ -56,6 +57,7 @@ public class MandiriVaActivity extends BaseActivity implements MandiriVaMvpView 
 
         Bundle dataParams = getIntent().getExtras();
         if (dataParams != null) {
+            merchantName = dataParams.getString("merchantName");
             String clientId = dataParams.getString("clientId");
             String invoiceNumber = dataParams.getString("invoiceNumber");
             amount = dataParams.getString("amount");
@@ -119,6 +121,8 @@ public class MandiriVaActivity extends BaseActivity implements MandiriVaMvpView 
             intent.putExtra("amount", amount);
             intent.putExtra("channelId", PaymentChannel.VA_MANDIRI.getValue());
             intent.putExtra("isProduction", isProduction);
+            intent.putExtra("merchantName", merchantName);
+            intent.putExtra("expiredTime", data.getVirtualAccountInfo().getExpiredDate());
             startActivity(intent);
         }
         finish();

@@ -18,7 +18,6 @@ import com.doku.android.sdk.ui.base.BaseActivity;
 import com.doku.android.sdk.ui.resultpage.ResultPageActivity;
 import com.doku.android.sdk.utils.PaymentChannel;
 import com.google.gson.Gson;
-
 import javax.inject.Inject;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
@@ -29,6 +28,7 @@ public class MandiriSyariahVaActivity extends BaseActivity implements MandiriSya
 
     private ProgressDialog progressDialog;
     private String amount = "0";
+    private String merchantName = "";
     private Boolean isProduction = false;
     private Boolean usePageResult = false;
 
@@ -56,6 +56,7 @@ public class MandiriSyariahVaActivity extends BaseActivity implements MandiriSya
 
         Bundle dataParams = getIntent().getExtras();
         if (dataParams != null) {
+            merchantName = dataParams.getString("merchantName");
             String clientId = dataParams.getString("clientId");
             String invoiceNumber = dataParams.getString("invoiceNumber");
             amount = dataParams.getString("amount");
@@ -122,6 +123,8 @@ public class MandiriSyariahVaActivity extends BaseActivity implements MandiriSya
             intent.putExtra("amount", amount);
             intent.putExtra("channelId", PaymentChannel.VA_SYARIAH_MANDIRI.getValue());
             intent.putExtra("isProduction", isProduction);
+            intent.putExtra("merchantName", merchantName);
+            intent.putExtra("expiredTime", data.getVirtualAccountInfo().getExpiredDate());
             startActivity(intent);
         }
         finish();
@@ -131,6 +134,7 @@ public class MandiriSyariahVaActivity extends BaseActivity implements MandiriSya
     public void errorMessage(String titileError, String errorMessage) {
         progressDialog.dismiss();
         Toast.makeText(getApplicationContext(), titileError + " = " +errorMessage,Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
