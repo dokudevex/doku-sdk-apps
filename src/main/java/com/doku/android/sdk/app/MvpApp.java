@@ -2,9 +2,6 @@ package com.doku.android.sdk.app;
 
 import android.app.Application;
 import android.content.res.Resources;
-
-import androidx.multidex.MultiDexApplication;
-
 import com.doku.android.sdk.di.component.ApplicationComponent;
 import com.doku.android.sdk.di.component.DaggerApplicationComponent;
 import com.doku.android.sdk.di.module.ApplicationModule;
@@ -13,7 +10,7 @@ import com.doku.android.sdk.utils.AppLogger;
 /**
  * Created by dedyeirawan on 21,May,2020
  */
-public class MvpApp extends MultiDexApplication {
+public class MvpApp extends Application {
 
     private ApplicationComponent applicationComponent;
     private static Resources resources;
