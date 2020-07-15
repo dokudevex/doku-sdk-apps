@@ -17,6 +17,7 @@ public class DokuPayVa {
 
     public static class Builder {
         private Context context;
+        private String merchantName;
         private String clientId;
         private String invoiceNumber;
         private String dataAmount;
@@ -31,6 +32,11 @@ public class DokuPayVa {
 
         public Builder (Context context) {
             this.context = context;
+        }
+
+        public DokuPayVa.Builder merchantName(String merchantName) {
+            this.merchantName = merchantName;
+            return this;
         }
 
         public DokuPayVa.Builder clientId(String clientId) {
@@ -101,6 +107,7 @@ public class DokuPayVa {
         }
 
         private Intent intentWithputExtra(Intent intent) {
+            intent.putExtra("merchantName", paymentItems.getMerchantName());
             intent.putExtra("clientId", paymentItems.getClientId());
             intent.putExtra("invoiceNumber", paymentItems.getInvoiceNumber());
             intent.putExtra("amount", paymentItems.getDataAmount());
@@ -118,6 +125,7 @@ public class DokuPayVa {
     private DokuPayVa(Builder builder) {
         paymentItems = new PaymentItems();
         paymentItems.setContext(builder.context);
+        paymentItems.setMerchantName(builder.merchantName);
         paymentItems.setClientId(builder.clientId);
         paymentItems.setInvoiceNumber(builder.invoiceNumber);
         paymentItems.setDataAmount(builder.dataAmount);

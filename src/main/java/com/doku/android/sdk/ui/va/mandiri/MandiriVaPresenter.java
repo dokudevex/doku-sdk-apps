@@ -39,14 +39,13 @@ public class MandiriVaPresenter<V extends MandiriVaMvpView, I extends MandiriVaM
                 }, throwable -> {
                     if (throwable instanceof HttpException) {
                         HttpException httpException = (HttpException) throwable;
-                        if(httpException.code() == 500 || httpException.code() == 404){
+                        if(httpException.code() == 500 || httpException.code() == 404 || httpException.code() == 400){
                             getMvpView().errorMessage("Internal Server Error",MvpApp.getAppResources().getString(R.string.Warning_ResponServer_Error));
                         }else {
-                            ResponseBody responseBody = ((HttpException) throwable).response().errorBody();
-                            getMvpView().errorMessage(String.valueOf(httpException.code()), responseBody.string());
+                            getMvpView().errorMessage(String.valueOf(httpException.code()), MvpApp.getAppResources().getString(R.string.Warning_ResponServer_Error));
                         }
                     } else if (throwable instanceof SocketTimeoutException) {
-                        getMvpView().errorMessage("Socket Timeout",MvpApp.getAppResources().getString(R.string.Warning_ResponServer_Error));
+                        getMvpView().errorMessage("Socket Timeout",MvpApp.getAppResources().getString(R.string.Warning_ResponServer_TimeOut));
                     } else if (throwable instanceof IOException) {
                         getMvpView().errorMessage("IO Exception",MvpApp.getAppResources().getString(R.string.Warning_ResponServer_Error));
                     } else {

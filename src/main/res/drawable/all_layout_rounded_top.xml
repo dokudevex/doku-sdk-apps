@@ -10,7 +10,11 @@
         android:left="5dp"
         android:right="5dp"
         android:top="5dp" />
-    <corners android:radius="11dp" />
+    <corners
+        android:radius="11dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        />
     <gradient
         android:angle="90"
         android:centerColor="@color/white"

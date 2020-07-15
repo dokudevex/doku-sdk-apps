@@ -28,7 +28,7 @@
         android:layout_marginTop="10dp"
         android:background="#eaeaea"
         app:layout_constraintStart_toStartOf="@+id/textview_content_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textview_content_title"
         app:layout_constraintTop_toBottomOf="@+id/textview_content_title"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

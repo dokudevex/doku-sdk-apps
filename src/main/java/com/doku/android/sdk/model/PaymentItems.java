@@ -6,6 +6,7 @@ import android.content.Context;
  * Created by dedye on 03,June,2020
  */
 public class PaymentItems {
+    private String merchantName;
     private String clientId;
     private String invoiceNumber;
     private String dataAmount;
@@ -18,6 +19,14 @@ public class PaymentItems {
     private Boolean usePageResult;
     private Integer paymentChannel;
     private Context context;
+
+    public String getMerchantName() {
+        return merchantName;
+    }
+
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
+    }
 
     public Boolean getUsePageResult() {
         return usePageResult;

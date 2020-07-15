@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">DokuPaySdk</string>
     <string name="error">ERROR</string>
-    <string name="Warning_ResponServer_Error">Terjadi gangguan pada koneksi Internet atau Server. Silakan coba beberapa saat lagi.</string>
+    <string name="Warning_ResponServer_Error">Please Try Again Later.</string>
+    <string name="Warning_ResponServer_TimeOut">Request Timeout. Please try again.</string>
     <string name="error_field_required">Harus diisi</string>
     <string name="error_field_choose">Harus di pilih</string>
     <string name="bank_mandiri">Mandiri</string>
     <string name="bank_mandiri_syariah">Mandiri Syariah</string>
-    <string name="merchant">MERCHANT</string>
 </resources>

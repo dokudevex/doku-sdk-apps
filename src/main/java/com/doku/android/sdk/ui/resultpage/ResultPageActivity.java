@@ -10,21 +10,29 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.doku.android.sdk.BuildConfig;
 import com.doku.android.sdk.R;
 import com.doku.android.sdk.adapter.ExpandableRecyclerAdapter;
 import com.doku.android.sdk.adapter.HowToInstructionAdapter;
+import com.doku.android.sdk.main.DetailPayment;
 import com.doku.android.sdk.model.MandiriHowToPayResponse;
 import com.doku.android.sdk.ui.base.BaseActivity;
 import com.doku.android.sdk.utils.PaymentChannel;
 import com.doku.android.sdk.utils.Utils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
 public class ResultPageActivity extends BaseActivity implements ResultPageMvpView {
-
+    private TextView toolbarPaymentresultTitle;
     @Inject
     ResultPageMvpPresenter<ResultPageMvpView, ResultPageMvpInteractor> resultPagePresenter;
 
@@ -47,13 +55,16 @@ public class ResultPageActivity extends BaseActivity implements ResultPageMvpVie
     @SuppressLint("SetTextI18n")
     @Override
     protected void setUp() {
+        toolbarPaymentresultTitle = findViewById(R.id.toolbar_paymentresult_title);
         TextView textviewPaymentresultOrderid = findViewById(R.id.textview_paymentresult_orderid);
         TextView textviewPaymentresultTotalrp = findViewById(R.id.textview_paymentresult_totalrp);
         TextView textviewPaymentresultChannel = findViewById(R.id.textview_paymentresult_channel);
         TextView textviewPaymentresultVirtualnumber = findViewById(R.id.textview_paymentresult_virtualnumber);
         ImageView imageviewPaymentresultChannelnumber = findViewById(R.id.imageview_paymentresult_channelnumber);
+        TextView textViewPaymentresultExpiredTime = findViewById(R.id.textview_paymentresult_completepaymentbeforetime);
 
-        Button buttonPaymentpageChange = findViewById(R.id.button_paymentpage_change);
+
+        ConstraintLayout buttonPaymentpageChange = findViewById(R.id.button_paymentpage_change_box);
         buttonPaymentpageChange.setOnClickListener(view -> finish());
 
         TextView textviewPaymentresultCopy = findViewById(R.id.textview_paymentresult_copy);
@@ -64,19 +75,29 @@ public class ResultPageActivity extends BaseActivity implements ResultPageMvpVie
             Toast.makeText(getApplicationContext(), "Copy data berhasil",Toast.LENGTH_SHORT).show();
         });
 
+        Button buttonResultPageDetails =  findViewById(R.id.button_paymentresult_details);
+        buttonResultPageDetails.setOnClickListener(view -> {
+            DetailPayment addPhotoBottomDialogFragment = DetailPayment.newInstance();
+            addPhotoBottomDialogFragment.show(getSupportFragmentManager(), DetailPayment.TAG);
+        });
+
         Bundle dataParams = getIntent().getExtras();
         if (dataParams != null) {
+            String merchantName = dataParams.getString("merchantName");
+            toolbarPaymentresultTitle.setText(merchantName);
             String noVa = dataParams.getString("noVa");
             textviewPaymentresultVirtualnumber.setText(noVa);
             String orderId = dataParams.getString("invoiceNumber");
             textviewPaymentresultOrderid.setText("Order ID "+ orderId);
             String amount = dataParams.getString("amount");
+            String expiredTime = stringDateTimeProcessor(dataParams.getString("expiredTime")) + " WIB";
+            textViewPaymentresultExpiredTime.setText(expiredTime);
+
             textviewPaymentresultTotalrp.setText(Utils.formatCurrencyRupiah(Double.parseDouble(amount)));
             int channelId = dataParams.getInt("channelId");
             if (channelId == PaymentChannel.VA_MANDIRI.getValue()) {
                 imageviewPaymentresultChannelnumber.setBackgroundResource(R.drawable.logo_mandiri);
                 textviewPaymentresultChannel.setText(getResources().getString(R.string.bank_mandiri));
-
                 boolean isProduction = dataParams.getBoolean("isProduction");
                 if (isProduction) {
                     RetrofitUrlManager.getInstance().putDomain("isProduction", BuildConfig.BASE_URL_PRODUCTION);
@@ -93,6 +114,23 @@ public class ResultPageActivity extends BaseActivity implements ResultPageMvpVie
                 resultPagePresenter.getHowTopPaymandiriSyariah(noVa);
             }
         }
+    }
+
+
+    private String stringDateTimeProcessor(String expiredTimeRaw){
+        Date expiredTime = new Date();
+
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyyMMddhhmmss");
+        try {
+            expiredTime = timeFormatter.parse(expiredTimeRaw);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        SimpleDateFormat timeFormatterToOutput = new SimpleDateFormat("dd MMMM yyyy HH:mm");
+        String expiredTimeOuput = timeFormatterToOutput.format(expiredTime);
+        return expiredTimeOuput;
+
     }
 
     @Override

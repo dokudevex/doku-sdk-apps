@@ -3,68 +3,83 @@ package com.doku.android.sdk.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+
 import com.doku.android.sdk.R;
-import com.doku.android.sdk.model.MandiriHowToPayResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dedyeirawan on 26,May,2020
+ * Created by fascal on 26,May,2020
  */
-public class HowToInstructionAdapter extends ExpandableRecyclerAdapter<HowToInstructionAdapter.MenuItem> {
-    public static final int TYPE_MENU = 1002;
-    public MandiriHowToPayResponse dataInstruction;
+public class PaymentResultAdapter extends ExpandableRecyclerAdapter<PaymentResultAdapter.MenuItem> {
+    public static final int TYPE_MENU = 1001;
 
-    public HowToInstructionAdapter(Context context, MandiriHowToPayResponse dataInstruction) {
+    public PaymentResultAdapter(Context context) {
         super(context);
-        this.dataInstruction = dataInstruction;
         setItems(getItems());
     }
 
     public static class MenuItem extends ExpandableRecyclerAdapter.ListItem {
         public String titleGroup;
+        public Integer logoIdVal;
 
-        public MenuItem(String group) {
+        public MenuItem(String group,Integer logoId) {
             super(TYPE_HEADER);
 
             titleGroup = group;
+            logoIdVal =logoId;
         }
 
-        public MenuItem(String first, String last) {
+        public MenuItem(String first, String last,Integer logoId) {
             super(TYPE_MENU);
 
             titleGroup = first + " " + last;
+            logoIdVal =logoId;
         }
     }
 
     public class HeaderViewHolder extends ExpandableRecyclerAdapter.HeaderViewHolder {
         TextView textviewMenuToptitle;
+        ImageView imageviewMenuLogo;
+        Integer logoId =null;
 
         public HeaderViewHolder(View view) {
             super(view, view.findViewById(R.id.imageview_menu_arrow), view.findViewById(R.id.textview_menu_toptitle));
             textviewMenuToptitle = view.findViewById(R.id.textview_menu_toptitle);
+//            imageviewMenuLogo = view.findViewById(R.id.imageview_menu_logo);
         }
 
         public void bind(int position) {
             super.bind(position);
             textviewMenuToptitle.setText(visibleItems.get(position).titleGroup);
+            logoId = visibleItems.get(position).logoIdVal;
+            imageviewMenuLogo.setBackgroundResource(logoId);
         }
     }
 
     public class MenuViewHolder extends ExpandableRecyclerAdapter.ViewHolder {
         TextView textviewContentTitle;
+        ImageView imageviewContentLogo;
+        Integer logoId =null;
         ConstraintLayout constraintlayoutMenuContent;
 
         public MenuViewHolder(View view) {
             super(view);
 
             textviewContentTitle = view.findViewById(R.id.textview_content_title);
+//            imageviewContentLogo = view.findViewById(R.id.imageview_content_logo);
             constraintlayoutMenuContent = view.findViewById(R.id.constraintlayout_menu_content);
         }
 
         public void bind(final int position) {
+            logoId = visibleItems.get(position).logoIdVal;
+            imageviewContentLogo.setBackgroundResource(logoId);
             textviewContentTitle.setText(visibleItems.get(position).titleGroup);
         }
     }
@@ -95,12 +110,8 @@ public class HowToInstructionAdapter extends ExpandableRecyclerAdapter<HowToInst
 
     private List<MenuItem> getItems() {
         List<MenuItem> items = new ArrayList<>();
-        for(int i = 0; i < dataInstruction.getPaymentInstruction().size(); i++) {
-            items.add(new MenuItem(dataInstruction.getPaymentInstruction().get(i).getChannel()));
-            for (int j = 0; j < dataInstruction.getPaymentInstruction().get(i).getStep().size(); j++) {
-                items.add(new MenuItem((j+1)+". ", dataInstruction.getPaymentInstruction().get(i).getStep().get(j)));
-            }
-        }
+//        items.add(new MenuItem("Transfer via ATM",R.mipmap.icon_ib));
+//        items.add(new MenuItem("Mobile Banking",R.mipmap.icon_personal));
         return items;
     }
 }
