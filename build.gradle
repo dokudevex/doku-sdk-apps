@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 
 
 def     archiveName = 'doku-sdk-apps'
-def libVersion = '0.0.7'
+def libVersion = '0.0.11'
 
 android {
     compileSdkVersion 29
